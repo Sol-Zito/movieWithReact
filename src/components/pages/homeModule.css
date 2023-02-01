@@ -1,0 +1,21 @@
+
+.containerCards{
+
+    background-color: black;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
