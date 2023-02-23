@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CardMovie from '../common/cardMovie';
-import style from './homeModule.css';
+import './homeModule.css';
 import Header from '../common/header/header';
-
 import confetti from 'canvas-confetti';
 import { Button } from '@mui/material';
-import MovieModal from '../common/createMovieModal/movieModal';
+import MovieModal from '../common/movieModal';
 
 
 const Home = () => {
@@ -16,6 +15,9 @@ const Home = () => {
     const [favorite, setFavorite] = useState(false);
     const [isMovieCreated, setIsMovieCreated] = useState(false);
     const [isMovieDelete, setIsMovieDelete] = useState(false);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         axios.get("http://localhost:5000/movies")
@@ -42,6 +44,8 @@ const Home = () => {
             });
         }
 
+        console.log("movie", movie);
+
         axios.patch(`http://localhost:5000/movies/${movie.id}`, { isLiked: !movie.isLiked })
             .then(resp => console.log(resp.data))
             .then(resp => setDispatchLike(true))
@@ -51,9 +55,6 @@ const Home = () => {
 
     const moviesFilterd = movies.filter(movie => movie.isLiked);
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const deleteMovie = (movie) => {
         console.log('id de la pelicula: ', movie.id);

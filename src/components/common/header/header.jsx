@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
-import styles from './header.css';
+import './header.css';
 
 const Header = ({setFavorite}) => {
     return (
